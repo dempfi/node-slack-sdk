@@ -4,6 +4,9 @@ declare module '@slack/client' {
   interface Chat {
     postMessage(channel: string, text: string, options?: { attachments: any }) : Promise<any>
   }
+  interface IM {
+    open(userId: string): Promise<any>
+  }
   export class RtmClient extends EventEmitter {
     constructor(token: string, options?: any)
     start(): void
@@ -13,6 +16,7 @@ declare module '@slack/client' {
   export class WebClient {
     constructor(token: string, options?: any)
     chat: Chat
+    im: IM
   }
 
   export class IncomingWebhook {}
