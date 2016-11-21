@@ -6,12 +6,18 @@ declare module '@slack/client' {
   }
 
   interface Channels {
-    join(channelName: string) : Promise<any>
+    join(channelName: string): Promise<any>
+    create(channelName: string): Promise<any>
+  }
+
+  interface Groups {
+    create(groupName: string): Promise<any>
   }
 
   interface IM {
     open(userId: string): Promise<any>
   }
+
   export class RtmClient extends EventEmitter {
     constructor(token: string, options?: any)
     start(): void
@@ -22,6 +28,7 @@ declare module '@slack/client' {
     constructor(token: string, options?: any)
     chat: Chat
     channels: Channels
+    groups: Groups
     im: IM
   }
 
