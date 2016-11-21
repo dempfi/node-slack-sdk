@@ -4,6 +4,11 @@ declare module '@slack/client' {
   interface Chat {
     postMessage(channel: string, text: string, options?: { attachments: any }) : Promise<any>
   }
+
+  interface Channels {
+    join(channelName: string) : Promise<any>
+  }
+
   interface IM {
     open(userId: string): Promise<any>
   }
@@ -16,6 +21,7 @@ declare module '@slack/client' {
   export class WebClient {
     constructor(token: string, options?: any)
     chat: Chat
+    channels: Channels
     im: IM
   }
 
